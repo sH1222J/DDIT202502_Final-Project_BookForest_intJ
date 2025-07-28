@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서 목록 - BookForest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <style>
+        .list-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .list-controls .category-nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+        }
+        .list-controls .category-nav a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+        }
+        .list-controls .sort-options select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header -->
+        <header class="site-header">
+            <a href="main.html" class="logo">BookForest</a>
+            <nav class="main-nav">
+                <a href="book_list.html?category=domestic">국내도서</a>
+                <a href="book_list.html?category=foreign">외국도서</a>
+            </nav>
+            <div class="search-container" style="margin:0; width: 300px;">
+                 <div class="search-bar">
+                    <input type="text" id="listSearchInput" placeholder="도서명 또는 저자 검색">
+                    <button type="submit" aria-label="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="autocomplete-results" id="listAutocompleteResults">
+                    <!-- Results would be populated here by JS -->
+                </div>
+            </div>
+            <nav class="util-nav">
+                <a href="login.html">로그인</a>
+                <a href="signup.html">회원가입</a>
+                <a href="cart.html">장바구니</a>
+                <a href="customer_service.html">고객센터</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>국내도서</h1>
+            <div class="list-controls">
+                <div class="category-nav">
+                    <a href="#" class="active">IT/프로그래밍</a>
+                    <a href="#">인문/사회</a>
+                    <a href="#">경제/경영</a>
+                    <a href="#">자기계발</a>
+                </div>
+                <div class="sort-options">
+                    <select name="sort">
+                        <option value="popularity">판매량순</option>
+                        <option value="newest">최신순</option>
+                        <option value="reviews">리뷰많은순</option>
+                        <option value="rating">별점높은순</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="book-grid">
+                <!-- 8 sample book items -->
+                <div class="book-item">
+                    <a href="book_detail.html" style="text-decoration: none; color: inherit;"><img src="https://via.placeholder.com/300x400.png?text=Book+1" alt="책 표지"><div class="book-info"><h3>면접을 위한 CS 전공지식 노트</h3><p class="author">주홍철</p><p class="price">22,000원</p></div></a>
+                </div>
+                <div class="book-item">
+                    <a href="book_detail.html" style="text-decoration: none; color: inherit;"><img src="https://via.placeholder.com/300x400.png?text=Book+2" alt="책 표지"><div class="book-info"><h3>이것이 취업을 위한 코딩 테스트다</h3><p class="author">나동빈</p><p class="price">34,000원</p></div></a>
+                </div>
+                <div class="book-item">
+                    <a href="book_detail.html" style="text-decoration: none; color: inherit;"><img src="https://via.placeholder.com/300x400.png?text=Book+3" alt="책 표지"><div class="book-info"><h3>혼자 공부하는 자바</h3><p class="author">신용권</p><p class="price">26,000원</p></div></a>
+                </div>
+                <div class="book-item">
+                    <a href="book_detail.html" style="text-decoration: none; color: inherit;"><img src="https://via.placeholder.com/300x400.png?text=Book+4" alt="책 표지"><div class="book-info"><h3>모던 자바스크립트 Deep Dive</h3><p class="author">이웅모</p><p class="price">45,000원</p></div></a>
+                </div>
+                <div class="book-item">
+                    <a href="book_detail.html" style="text-decoration: none; color: inherit;"><img src="https://via.placeholder.com/300x400.png?text=Book+5" alt="책 표지"><div class="book-info"><h3>Clean Code(클린 코드)</h3><p class="author">로버트 C. 마틴</p><p class="price">30,000원</p></div></a>
+                </div>
+                <div class="book-item">
+                    <a href="book_detail.html" style="text-decoration: none; color: inherit;"><img src="https://via.placeholder.com/300x400.png?text=Book+6" alt="책 표지"><div class="book-info"><h3>객체지향의 사실과 오해</h3><p class="author">조영호</p><p class="price">20,000원</p></div></a>
+                </div>
+                <div class="book-item">
+                    <a href="book_detail.html" style="text-decoration: none; color: inherit;"><img src="https://via.placeholder.com/300x400.png?text=Book+7" alt="책 표지"><div class="book-info"><h3>성공적인 취업을 위한 면접 질문 150</h3><p class="author">김취준</p><p class="price">18,000원</p></div></a>
+                </div>
+                <div class="book-item">
+                    <a href="book_detail.html" style="text-decoration: none; color: inherit;"><img src="https://via.placeholder.com/300x400.png?text=Book+8" alt="책 표지"><div class="book-info"><h3>SQL 첫걸음</h3><p class="author">아사이 아츠시</p><p class="price">24,000원</p></div></a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <p>&copy; 2025 BookForest. All Rights Reserved.</p>
+        </footer>
+    </div>
+    <script>
+        const searchInput = document.getElementById('listSearchInput');
+        const autocompleteResults = document.getElementById('listAutocompleteResults');
+
+        searchInput.addEventListener('input', function() {
+            if (this.value.length > 0) {
+                // In a real application, you would fetch data and populate this list
+                autocompleteResults.innerHTML = '<ul><li><a href="#">Search result 1</a></li><li><a href="#">Search result 2</a></li></ul>';
+                autocompleteResults.style.display = 'block';
+            } else {
+                autocompleteResults.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            if (!searchInput.contains(event.target)) {
+                autocompleteResults.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

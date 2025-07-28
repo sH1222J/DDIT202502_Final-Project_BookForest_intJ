@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서 상세 - BookForest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <style>
+        .book-detail-container {
+            display: flex;
+            gap: 40px;
+        }
+        .book-cover {
+            flex: 0 0 400px;
+        }
+        .book-cover img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .book-meta {
+            flex-grow: 1;
+        }
+        .book-meta h1 { border: none; padding-bottom: 0; margin-bottom: 10px; }
+        .book-meta .author { font-size: 1.2rem; color: #555; margin-bottom: 20px; }
+        .book-meta .info-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .book-meta .info-table td { padding: 10px 0; border-bottom: 1px solid #eee; }
+        .book-meta .info-table td:first-child { font-weight: 600; width: 100px; }
+        .price-info .original-price { text-decoration: line-through; color: #999; font-size: 1.1rem; }
+        .price-info .sale-price { font-size: 2rem; font-weight: 700; color: var(--primary-color); }
+        .price-info .discount-rate { font-size: 1.5rem; color: #e53e3e; margin-left: 10px; }
+        
+        .quantity-selector { display: flex; align-items: center; margin-top: 20px; }
+        .quantity-selector input { width: 50px; text-align: center; font-size: 1rem; padding: 8px; border: 1px solid #ddd; }
+        .quantity-selector button { padding: 8px 12px; border: 1px solid #ddd; background-color: #f8f9fa; cursor: pointer; }
+
+        .action-buttons { display: flex; gap: 15px; margin-top: 30px; }
+        .action-buttons .btn { flex-grow: 1; }
+        .book-tabs { margin-top: 50px; }
+        .tab-nav { display: flex; border-bottom: 2px solid #ddd; }
+        .tab-nav a { padding: 15px 25px; text-decoration: none; color: #555; font-weight: 600; }
+        .tab-nav a.active { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); margin-bottom: -2px; }
+        .tab-content { padding: 30px 0; }
+
+        .review-item { border-bottom: 1px solid #eee; padding: 20px 0; }
+        .review-item:last-child { border-bottom: none; }
+        .review-meta { display: flex; align-items: center; margin-bottom: 10px; }
+        .review-meta .author { font-weight: 600; }
+        .review-meta .date { margin-left: 15px; color: #888; font-size: 0.9rem; }
+        .review-stars { color: #f7d106; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header -->
+        <header class="site-header">
+            <a href="main.html" class="logo">BookForest</a>
+            <nav class="main-nav">
+                <a href="book_list.html?category=domestic">국내도서</a>
+                <a href="book_list.html?category=foreign">외국도서</a>
+            </nav>
+            <nav class="util-nav">
+                <a href="login.html">로그인</a>
+                <a href="cart.html">장바구니</a>
+                <a href="customer_service.html">고객센터</a>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="book-detail-container">
+                <div class="book-cover">
+                    <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791162245649.jpg" alt="면접을 위한 CS 전공지식 노트">
+                </div>
+                <div class="book-meta">
+                    <h1>면접을 위한 CS 전공지식 노트</h1>
+                    <p class="author">주홍철 저</p>
+                    <table class="info-table">
+                        <tr><td>출판사</td><td>길벗</td></tr>
+                        <tr><td>출판일</td><td>2021-09-01</td></tr>
+                        <tr><td>페이지</td><td>360쪽</td></tr>
+                    </table>
+                    <div class="price-info">
+                        <span class="original-price">24,000원</span>
+                        <span class="sale-price">22,000원</span>
+                        <span class="discount-rate">10%</span>
+                    </div>
+                    <div class="quantity-selector">
+                        <button>-</button>
+                        <input type="text" value="1" readonly>
+                        <button>+</button>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary">찜하기</button>
+                        <button class="btn btn-secondary">장바구니</button>
+                        <button class="btn">바로구매</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-tabs">
+                <nav class="tab-nav">
+                    <a href="#info" class="active">도서 정보</a>
+                    <a href="#reviews">리뷰 (3)</a>
+                </nav>
+                <div id="info" class="tab-content">
+                    <h2>도서 정보</h2>
+                    <h3>목차</h3>
+                    <p>1장. 디자인 패턴과 프로그래밍 패러다임<br>2장. 네트워크<br>3장. 운영체제<br>...</p>
+                    <h3>책 소개</h3>
+                    <p>기술 면접은 IT 기업에 입사하기 위한 필수 관문입니다. 이 책은...</p>
+                </div>
+                <div id="reviews" class="tab-content" style="display: block;">
+                    <h2>리뷰 (3)</h2>
+                    <div class="review-item">
+                        <div class="review-meta">
+                            <span class="author">김**</span>
+                            <span class="review-stars">★★★★★</span>
+                            <span class="date">2024-07-20</span>
+                        </div>
+                        <p>면접 준비에 큰 도움이 되었습니다. 핵심만 잘 요약되어 있어요.</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-meta">
+                            <span class="author">이**</span>
+                            <span class="review-stars">★★★★☆</span>
+                            <span class="date">2024-07-19</span>
+                        </div>
+                        <p>내용은 좋은데 조금 더 깊이가 있었으면 하는 아쉬움이 남습니다.</p>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-meta">
+                            <span class="author">박**</span>
+                            <span class="review-stars">★★★★★</span>
+                            <span class="date">2024-07-18</span>
+                        </div>
+                        <p>필요한 내용만 쏙쏙 들어와서 좋았어요. 추천합니다!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+            <p>&copy; 2025 BookForest. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

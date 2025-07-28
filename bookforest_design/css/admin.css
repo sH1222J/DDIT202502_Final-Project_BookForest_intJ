@@ -1,0 +1,80 @@
+/* admin.css - Styles for admin and publisher pages */
+.admin-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+.admin-sidebar {
+    flex: 0 0 220px;
+    background-color: #343a40;
+    color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    height: calc(100vh - 120px); /* Adjust based on header/footer */
+    position: sticky;
+    top: 100px;
+}
+.admin-sidebar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #495057;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+}
+.admin-nav ul {
+    list-style: none;
+}
+.admin-nav ul li a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #adb5bd;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+.admin-nav ul li a.active,
+.admin-nav ul li a:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.admin-content {
+    flex-grow: 1;
+}
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.data-table th, .data-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.data-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+.data-table tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+}
+.data-table .btn {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin-right: 5px; /* Add margin between buttons */
+}
+.data-table .btn:last-child {
+    margin-right: 0; /* Remove margin from the last button */
+}
+.status-red { color: #e53e3e; font-weight: bold; }
+.status-yellow { color: #dd9b0d; font-weight: bold; }
