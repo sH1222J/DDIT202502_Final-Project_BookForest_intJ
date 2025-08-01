@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 - 나의 문의내역</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/mypage.css">
+    <style>
+        .qna-list-item { border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; }
+        .qna-question { padding: 20px; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; }
+        .qna-status { font-size: 0.9rem; color: #666; }
+        .qna-status.completed { color: var(--primary-color); }
+        .qna-answer { padding: 20px; background-color: #f8f9fa; border-top: 1px solid #ddd; display: none; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Header -->
+        <header class="site-header"><a href="main.html" class="logo">BookForest</a><nav class="util-nav"><a href="#">로그아웃</a><a href="cart.html">장바구니</a></nav></header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>마이페이지</h1>
+            <div class="mypage-container">
+                <aside class="mypage-sidebar">
+                    <div class="profile"><p class="profile-name">홍길동님</p><p class="profile-grade">일반회원</p></div>
+                    <nav class="mypage-nav">
+                        <ul>
+                            <li><a href="mypage_info.html">정보조회 및 수정</a></li>
+                            <li><a href="mypage_orders.html">주문내역</a></li>
+                            <li><a href="mypage_wishlist.html">찜 목록</a></li>
+                            <li><a href="mypage_qna.html" class="active">나의 문의내역</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+                <section class="mypage-content">
+                    <h2>나의 문의내역</h2>
+                    <div class="qna-list-item">
+                        <div class="qna-question">
+                            <span>배송 관련 문의입니다.</span>
+                            <span class="qna-status completed">답변완료</span>
+                        </div>
+                        <div class="qna-answer">
+                            <strong>A.</strong> 안녕하세요, 고객님. 문의하신 상품은 현재 배송 출발했으며...
+                        </div>
+                    </div>
+                    <div class="qna-list-item">
+                        <div class="qna-question">
+                            <span>상품 재고 문의</span>
+                            <span class="qna-status">답변대기</span>
+                        </div>
+                    </div>
+                    <button class="btn" style="margin-top: 20px; width: auto; padding: 10px 20px;">새 문의 작성</button>
+                </section>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="site-footer"><p>&copy; 2025 BookForest.</p></footer>
+    </div>
+</body>
+</html>

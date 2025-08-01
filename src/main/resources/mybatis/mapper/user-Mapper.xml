@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookforest.project_bookforest_intj.user.repository.UserRepository">
+
+    <resultMap type="com.bookforest.project_bookforest_intj.user.vo.RegisterReqDto" id="registerReqMap">
+        <result property="aeId" column="AE_ID" />
+        <result property="userNm" column="USER_NM" />
+        <result property="userId" column="USER_ID" />
+        <result property="address" column="ADDRESS" />
+        <result property="email" column="EMAIL" />
+        <result property="enabled" column="ENABLED" />
+        <result property="password" column="PASSWORD" />
+        <result property="phone" column="PHONE" />
+        <result property="username" column="USERNAME" />
+        <collection property="authVOList" resultMap="authMap" />
+    </resultMap>
+
+    <resultMap type="com.bookforest.project_bookforest_intj.user.vo.AuthVO" id="authMap" >
+        <result property="aeId" column="AE_ID" />
+        <result property="ccgU001" column="CCG_U001" />
+    </resultMap>
+    <!--public User findByUsername(String username);
+    com.bookforest.project_bookforest_intj.user.vo.RegisterReqDto
+    -->
+    <select id="findByUsername" parameterType="String" resultMap="registerReqMap">
+        SELECT AE_ID, CCG_U001, USER_NM, USER_ID, ADDRESS, EMAIL
+             , ENABLED, PASSWORD, PHONE, USERNAME
+        FROM   USERS
+        WHERE  AE_ID = #{username}
+    </select>
+
+    <select id="findUsernameByNameAndEmail" resultType="String">
+        SELECT USERNAME
+        FROM USERS
+        WHERE USER_NM = #{userNm} AND EMAIL = #{email}
+    </select>
+
+    <select id="findByUsernameOrEmail" resultType="com.bookforest.project_bookforest_intj.user.vo.UserVO">
+        SELECT AE_ID, USERNAME, EMAIL
+        FROM USERS
+        WHERE USERNAME = #{usernameOrEmail} OR EMAIL = #{usernameOrEmail}
+    </select>
+
+    <update id="updatePassword">
+        UPDATE USERS
+        SET PASSWORD = #{password}
+        WHERE USERNAME = #{username}
+    </update>
+
+</mapper>

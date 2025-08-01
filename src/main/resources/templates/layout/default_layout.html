@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>BookForest</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <th:block layout:fragment="css"></th:block>
+</head>
+<body>
+    <div class="wrapper">
+        <th:block th:replace="~{layout/fragments/header :: headerFragment}"></th:block>
+
+        <div layout:fragment="content" class="main-content"></div>
+
+    </div>
+    <th:block layout:fragment="script"></th:block>
+</body>
+</html>

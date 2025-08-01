@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BookForest - 로그인</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="~{layout/fragments/header :: headerFragment}"></div>
+
+    <main class="main-content" style="padding-top: 60px; padding-bottom: 60px;">
+        <div class="container" style="max-width: 480px; margin: 0 auto;">
+            <div class="header">
+                <h1>로그인</h1>
+            </div>
+            <form th:action="@{/user/login}" method="post">
+                <div class="form-group">
+                    <label for="username">아이디</label>
+                    <input type="text" id="username" name="username"
+                           placeholder="아이디를 입력하세요" value="testuser01" required />
+                </div>
+                <div class="form-group">
+                    <label for="password">비밀번호</label>
+                    <input type="password" id="password" name="password"
+                           placeholder="비밀번호를 입력하세요" value="password123" required>
+                </div>
+
+                <div th:if="${param.error}" class="alert alert-danger" style="color: red; margin-bottom: 1rem;">
+                    아이디 또는 비밀번호가 올바르지 않습니다.
+                </div>
+
+                <div class="form-group" style="display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center;">
+                        <input type="checkbox" id="remember-me" name="remember-me" style="width: auto; margin-right: 8px;">
+                        <label for="remember-me" style="margin-bottom: 0; font-weight: normal; font-size: 0.9rem;">로그인 상태 유지</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">로그인</button>
+            </form>
+            <div class="links">
+                <a th:href="@{/user/find-id}">아이디 찾기</a>
+                <span>|</span>
+                <a href="#">아이디 찾기</a>
+                <span>|</span>
+                <a th:href="@{/user/forgot-password}">비밀번호 찾기</a>
+                <span>|</span>
+                <span>|</span>
+                <a th:href="@{/user/register}">회원가입</a>
+                <br><br>
+                <a href="#">비회원 주문조회</a>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{layout/fragments/footer :: footerFragment}"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비회원 주문조회 - BookForest</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/layout.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header class="site-header">
+            <a href="main.html" class="logo">BookForest</a>
+        </header>
+        <main class="main-content" style="padding-top: 60px; padding-bottom: 60px;">
+            <div class="container" style="max-width: 480px; margin: 0 auto;">
+                <div class="header">
+                    <h1>비회원 주문조회</h1>
+                </div>
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="orderer-name">주문자 이름</label>
+                        <input type="text" id="orderer-name" name="orderer-name" placeholder="주문 시 입력한 이름을 입력하세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="orderer-email">이메일</label>
+                        <input type="email" id="orderer-email" name="orderer-email" placeholder="주문 시 입력한 이메일을 입력하세요" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-password">주문 비밀번호</label>
+                        <input type="password" id="order-password" name="order-password" placeholder="주문 시 설정한 비밀번호를 입력하세요" required>
+                    </div>
+                    <button type="submit" class="btn">주문조회</button>
+                </form>
+                <div class="links">
+                    <a href="login.html">로그인</a>
+                    <span>|</span>
+                    <a href="main.html">메인으로</a>
+                </div>
+            </div>
+        </main>
+        <footer class="site-footer">
+            <p>&copy; 2025 BookForest. All Rights Reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

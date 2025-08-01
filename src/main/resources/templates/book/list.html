@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout}">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <style>
+        .list-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .list-controls .category-nav a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 600;
+        }
+        .list-controls .category-nav a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+        }
+        .list-controls .sort-options select {
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+    </style>
+</th:block>
+
+<div layout:fragment="content">
+    <main class="main-content">
+        <h1 th:text="${param.category == 'domestic' ? '국내도서' : (param.category == 'foreign' ? '외국도서' : '전체도서')}">도서 목록</h1>
+        <div class="list-controls">
+            <div class="category-nav">
+                <!-- TODO: Add category links -->
+            </div>
+            <div class="sort-options">
+                <select name="sort">
+                    <option value="popularity">판매량순</option>
+                    <option value="newest">최신순</option>
+                    <option value="reviews">리뷰많은순</option>
+                    <option value="rating">별점높은순</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="book-grid">
+            <div class="book-item" th:each="book : ${books}">
+                <a th:href="@{/book/detail/{bookId}(bookId=${book.bookId})}" style="text-decoration: none; color: inherit;">
+                    <img th:src="${book.coverImg}" alt="책 표지">
+                    <div class="book-info">
+                        <h3 th:text="${book.title}">책 제목</h3>
+                        <p class="author" th:text="${book.author}">저자</p>
+                        <p class="price" th:text="|${book.salePrice}원|">가격</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+</div>
+</html>

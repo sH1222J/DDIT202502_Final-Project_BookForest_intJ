@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout}">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <style>
+        .book-detail-container { display: flex; gap: 40px; }
+        .book-cover { flex: 0 0 400px; }
+        .book-cover img { width: 100%; border-radius: 8px; }
+        .book-meta { flex-grow: 1; }
+        .book-meta h1 { border: none; padding-bottom: 0; margin-bottom: 10px; }
+        .book-meta .author { font-size: 1.2rem; color: #555; margin-bottom: 20px; }
+        .book-meta .info-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        .book-meta .info-table td { padding: 10px 0; border-bottom: 1px solid #eee; }
+        .book-meta .info-table td:first-child { font-weight: 600; width: 100px; }
+        .price-info .original-price { text-decoration: line-through; color: #999; font-size: 1.1rem; }
+        .price-info .sale-price { font-size: 2rem; font-weight: 700; color: var(--primary-color); }
+        .price-info .discount-rate { font-size: 1.5rem; color: #e53e3e; margin-left: 10px; }
+        .quantity-selector { display: flex; align-items: center; margin-top: 20px; }
+        .quantity-selector input { width: 50px; text-align: center; font-size: 1rem; padding: 8px; border: 1px solid #ddd; }
+        .quantity-selector button { padding: 8px 12px; border: 1px solid #ddd; background-color: #f8f9fa; cursor: pointer; }
+        .action-buttons { display: flex; gap: 15px; margin-top: 30px; }
+        .action-buttons .btn { flex-grow: 1; }
+        .book-tabs { margin-top: 50px; }
+        .tab-nav { display: flex; border-bottom: 2px solid #ddd; }
+        .tab-nav a { padding: 15px 25px; text-decoration: none; color: #555; font-weight: 600; }
+        .tab-nav a.active { color: var(--primary-color); border-bottom: 2px solid var(--primary-color); margin-bottom: -2px; }
+        .tab-content { padding: 30px 0; }
+    </style>
+</th:block>
+
+<div layout:fragment="content">
+    <main class="main-content">
+        <div class="book-detail-container" th:object="${book}">
+            <div class="book-cover">
+                <img th:src="*{coverImg}" th:alt="*{title}">
+            </div>
+            <div class="book-meta">
+                <h1 th:text="*{title}">도서 제목</h1>
+                <p class="author" th:text="|*{author} 저|">저자</p>
+                <table class="info-table">
+                    <tr><td>출판사</td><td th:text="*{publisher}"></td></tr>
+                    <tr><td>출판일</td><td th:text="*{publicationDate}"></td></tr>
+                    <tr><td>페이지</td><td th:text="|*{pages}쪽|"></td></tr>
+                </table>
+                <div class="price-info">
+                    <span class="original-price" th:text="|*{price}원|"></span>
+                    <span class="sale-price" th:text="|*{salePrice}원|"></span>
+                    <span class="discount-rate" th:if="${book.price > book.salePrice}"
+                          th:text="|${(book.price - book.salePrice) * 100 / book.price}%|"></span>
+                </div>
+                <div class="quantity-selector">
+                    <button>-</button>
+                    <input type="text" value="1" readonly>
+                    <button>+</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn btn-secondary">찜하기</button>
+                    <button class="btn btn-secondary">장바구니</button>
+                    <button class="btn">바로구매</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="book-tabs">
+            <nav class="tab-nav">
+                <a href="#info" class="active">도서 정보</a>
+                <a href="#reviews">리뷰</a>
+            </nav>
+            <div id="info" class="tab-content" th:object="${book}">
+                <h2>도서 정보</h2>
+                <h3>목차</h3>
+                <p th:text="*{contents}"></p>
+                <h3>책 소개</h3>
+                <p th:text="*{description}"></p>
+            </div>
+            <div id="reviews" class="tab-content" style="display: none;">
+                <h2>리뷰</h2>
+                <!-- TODO: 리뷰 기능 구현 시 추가 -->
+            </div>
+        </div>
+    </main>
+</div>
+</html>

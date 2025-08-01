@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BookForest - 메인</title>
+    <!-- CSS 직접 포함 -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+    <style>
+        .hero-section {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            border: none;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <!-- 헤더 프래그먼트 직접 삽입 -->
+    <div th:replace="~{layout/fragments/header :: headerFragment}"></div>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="main-content">
+        <section class="hero-section">
+            <h1>취업 준비, 어떤 책부터 시작해야 할지 막막하다면?</h1>
+            <p>BookForest가 엄선한 필독서로 첫 걸음을 시작하세요.</p>
+        </section>
+
+        <section>
+            <h2>주간 베스트셀러</h2>
+            <div class="book-grid">
+                <!-- Sample Book Item 1 -->
+                <div class="book-item">
+                    <a href="#" style="text-decoration: none; color: inherit;">
+                        <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791162245649.jpg" alt="면접을 위한 CS 전공지식 노트">
+                        <div class="book-info">
+                            <h3>면접을 위한 CS 전공지식 노트</h3>
+                            <p class="author">주홍철</p>
+                            <p class="price">22,000원</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- Sample Book Item 2 -->
+                <div class="book-item">
+                    <a href="#" style="text-decoration: none; color: inherit;">
+                        <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791162241887.jpg" alt="이것이 취업을 위한 코딩 테스트다">
+                        <div class="book-info">
+                            <h3>이것이 취업을 위한 코딩 테스트다</h3>
+                            <p class="author">나동빈</p>
+                            <p class="price">34,000원</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="book-item">
+                    <a href="#" style="text-decoration: none; color: inherit;">
+                        <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791162241474.jpg" alt="혼자 공부하는 자바">
+                        <div class="book-info">
+                            <h3>혼자 공부하는 자바</h3>
+                            <p class="author">신용권</p>
+                            <p class="price">26,000원</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="book-item">
+                    <a href="#" style="text-decoration: none; color: inherit;">
+                        <img src="https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791189392766.jpg" alt="모던 자바스크립트 Deep Dive">
+                        <div class="book-info">
+                            <h3>모던 자바스크립트 Deep Dive</h3>
+                            <p class="author">이웅모</p>
+                            <p class="price">45,000원</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터는 여기에 직접 추가하거나, 프래그먼트로 포함시킬 수 있습니다. -->
+    <footer class="site-footer">
+        <p>&copy; 2025 BookForest. All Rights Reserved.</p>
+        <p><a href="#">이용약관</a> | <a href="#">개인정보처리방침</a> | <a href="#">고객센터</a></p>
+    </footer>
+</div>
+</body>
+</html>

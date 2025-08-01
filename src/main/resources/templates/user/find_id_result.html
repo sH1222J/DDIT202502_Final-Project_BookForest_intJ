@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>BookForest - 아이디 찾기 결과</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/layout.css}">
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="~{layout/fragments/header :: headerFragment}"></div>
+
+    <main class="main-content" style="padding-top: 60px; padding-bottom: 60px;">
+        <div class="container" style="max-width: 480px; margin: 0 auto; text-align: center;">
+            <div class="header">
+                <h1>아이디 찾기 결과</h1>
+            </div>
+
+            <div th:if="${foundUsername != null}">
+                <p>고객님의 아이디는 <strong th:text="${foundUsername}"></strong> 입니다.</p>
+            </div>
+
+            <div th:if="${foundUsername == null}">
+                <p>입력하신 정보와 일치하는 회원을 찾을 수 없습니다.</p>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <a th:href="@{/user/login}" class="btn">로그인 페이지로</a>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{layout/fragments/footer :: footerFragment}"></div>
+</div>
+</body>
+</html>
