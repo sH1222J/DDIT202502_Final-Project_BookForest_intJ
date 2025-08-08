@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default_layout}">
+<head>
+    <title>BookForest - Q&A</title>
+    <link rel="stylesheet" href="/css/mypage.css">
+</head>
+<body layout:fragment="content">
+<div class="container">
+    <h1>Q&A</h1>
+    <div class="qna-detail">
+        <div class="qna-question">
+            <h2 th:text="${qna.qnaTitle}"></h2>
+            <div class="qna-meta">
+                <span th:text="${qna.userId}"></span>
+                <span th:text="${#temporals.format(qna.qnaRegdate, 'yyyy-MM-dd HH:mm')}"></span>
+            </div>
+            <div class="qna-content" th:text="${qna.qnaContent}">
+            </div>
+        </div>
+        <div class="qna-answer" th:if="${qna.ansContent != null}">
+            <h3>답변</h3>
+            <div class="qna-meta">
+                <span th:text="${#temporals.format(qna.ansRegdate, 'yyyy-MM-dd HH:mm')}"></span>
+            </div>
+            <div class="qna-content" th:text="${qna.ansContent}">
+            </div>
+        </div>
+        <div class="qna-answer" th:if="${qna.ansContent == null}">
+            <h3>아직 답변이 등록되지 않았습니다.</h3>
+        </div>
+    </div>
+    <a href="/qna/list" class="btn-primary">목록으로</a>
+</div>
+</body>
+</html>

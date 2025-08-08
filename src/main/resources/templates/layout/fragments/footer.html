@@ -1,4 +1,13 @@
-<footer class="site-footer" th:fragment="footerFragment" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<footer class="site-footer" th:fragment="footerFragment">
     <p>&copy; 2025 BookForest. All Rights Reserved.</p>
-    <p><a href="#">이용약관</a> | <a href="#">개인정보처리방침</a> | <a href="#">고객센터</a></p>
+    <p>
+        <a href="#">이용약관</a> | 
+        <a href="#">개인정보처리방침</a> | 
+        <a th:href="@{/customer-service}">고객센터</a>
+    </p>
 </footer>
+
+</html>

@@ -16,6 +16,7 @@ public class RegisterReqDto {
     private String password;
     private String phone;
     private String username;
+    private Boolean mustChangePassword;
 
     //RegisterReqDto : Auth = 1 : N
     private List<AuthVO> authVOList;

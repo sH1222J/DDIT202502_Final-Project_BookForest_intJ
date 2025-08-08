@@ -12,6 +12,7 @@
         <result property="password" column="PASSWORD" />
         <result property="phone" column="PHONE" />
         <result property="username" column="USERNAME" />
+        <result property="mustChangePassword" column="MUST_CHANGE_PASSWORD" />
         <collection property="authVOList" resultMap="authMap" />
     </resultMap>
 
@@ -19,12 +20,10 @@
         <result property="aeId" column="AE_ID" />
         <result property="ccgU001" column="CCG_U001" />
     </resultMap>
-    <!--public User findByUsername(String username);
-    com.bookforest.project_bookforest_intj.user.vo.RegisterReqDto
-    -->
+
     <select id="findByUsername" parameterType="String" resultMap="registerReqMap">
         SELECT AE_ID, CCG_U001, USER_NM, USER_ID, ADDRESS, EMAIL
-             , ENABLED, PASSWORD, PHONE, USERNAME
+             , ENABLED, PASSWORD, PHONE, USERNAME, MUST_CHANGE_PASSWORD
         FROM   USERS
         WHERE  AE_ID = #{username}
     </select>
@@ -46,5 +45,31 @@
         SET PASSWORD = #{password}
         WHERE USERNAME = #{username}
     </update>
+
+    <select id="findByNameAndUsernameAndEmail" resultType="com.bookforest.project_bookforest_intj.user.vo.UserVO">
+        SELECT USER_ID, USERNAME, PASSWORD, EMAIL, USER_NM as name, PHONE, ADDRESS
+        FROM USERS
+        WHERE USER_NM = #{name} AND USERNAME = #{username} AND EMAIL = #{email}
+    </select>
+
+    <update id="updateMustChangePassword">
+        UPDATE USERS
+        SET MUST_CHANGE_PASSWORD = #{mustChangePassword}
+        WHERE USERNAME = #{username}
+    </update>
+
+    <insert id="registerUser" parameterType="com.bookforest.project_bookforest_intj.user.vo.RegisterReqDto">
+        INSERT INTO USERS
+        (AE_ID, CCG_U001, USER_NM, ADDRESS
+        , EMAIL, ENABLED, PASSWORD, PHONE, USERNAME)
+        VALUES(#{username}, 'ROLE_U01', #{userNm}, #{address}
+              , #{email}, '1', #{password}, #{phone}, #{username})
+    </insert>
+
+    <select id="findByUserId" resultType="com.bookforest.project_bookforest_intj.user.vo.UserVO">
+        SELECT USER_ID, USERNAME, PASSWORD, EMAIL, USER_NM as name, PHONE, ADDRESS
+        FROM USERS
+        WHERE USER_ID = #{userId}
+    </select>
 
 </mapper>

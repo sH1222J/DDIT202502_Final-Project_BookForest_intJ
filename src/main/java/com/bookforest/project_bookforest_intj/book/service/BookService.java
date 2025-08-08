@@ -17,13 +17,13 @@ public class BookService {
     //@Autowired
     //private BookRepository bookRepository;
 
-    /*
+    private final BookRepository bookRepository;
+
     public List<Book> findAllBooks() {
-        return null;
+        return bookRepository.findAll();
     }
 
     public Book findBookById(Long bookId) {
         return null;
     }
-     */
 }

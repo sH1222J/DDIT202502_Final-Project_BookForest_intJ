@@ -1,33 +1,20 @@
-<header class="site-header" th:fragment="headerFragment" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<header class="site-header" th:fragment="headerFragment">
     <a th:href="@{/}" class="logo">BookForest</a>
+
     <nav class="main-nav">
-        <a th:href="@{/book/list(category='domestic')}">국내도서</a>
-        <a th:href="@{/book/list(category='foreign')}">외국도서</a>
-    </nav>
-    <div class="search-container" style="margin:0; width: 300px;">
-        <div class="search-bar">
-            <input type="text" id="mainSearchInput" placeholder="도서명 또는 저자 검색">
-            <button type="submit" aria-label="Search">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-            </button>
-        </div>
-    </div>
-    <nav class="util-nav">
-        <!-- 비로그인 상태 -->
-        <th:block sec:authorize="isAnonymous()">
-            <a th:href="@{/user/login}">로그인</a>
-            <a th:href="@{/user/register}">회원가입</a>
-        </th:block>
-        <!-- 로그인 상태 -->
-        <th:block sec:authorize="isAuthenticated()">
-            <form th:action="@{/user/logout}" method="post" style="display: inline;">
-                <button type-="submit" style="background: none; border: none; padding: 0; color: #555; cursor: pointer; font-size: 0.9rem; margin-left: 20px;">로그아웃</button>
-            </form>
-            <a th:href="@{/mypage/info}">마이페이지</a>
-        </th:block>
-        <a th:href="@{/cart}">장바구니</a>
+        <a th:href="@{/book/list}">도서 목록</a>
         <a th:href="@{/customer-service}">고객센터</a>
+        <a th:href="@{/mypage/orders}">마이페이지</a>
+    </nav>
+
+    <nav class="util-nav">
+        <a th:href="@{/login}">로그인</a>
+        <a th:href="@{/signup}">회원가입</a>
+        <a th:href="@{/cart}">장바구니</a>
     </nav>
 </header>
+
+</html>

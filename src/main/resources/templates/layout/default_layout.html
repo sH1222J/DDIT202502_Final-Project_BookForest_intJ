@@ -2,18 +2,25 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <meta charset="UTF-8">
-    <title>BookForest</title>
+    <title layout:title-pattern="${pageTitle} - BookForest">BookForest</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <link rel="stylesheet" th:href="@{/css/layout.css}">
     <th:block layout:fragment="css"></th:block>
 </head>
 <body>
-    <div class="wrapper">
-        <th:block th:replace="~{layout/fragments/header :: headerFragment}"></th:block>
+<div class="wrapper">
+    <!-- Header -->
+    <th:block th:replace="~{layout/fragments/header :: headerFragment}"></th:block>
 
-        <div layout:fragment="content" class="main-content"></div>
+    <!-- Main Content -->
+    <main class="main-content" layout:fragment="content">
+        <!-- Each page's content will be inserted here -->
+    </main>
 
-    </div>
-    <th:block layout:fragment="script"></th:block>
+    <!-- Footer -->
+    <th:block th:replace="~{layout/fragments/footer :: footerFragment}"></th:block>
+</div>
+
+<th:block layout:fragment="script"></th:block>
 </body>
 </html>
