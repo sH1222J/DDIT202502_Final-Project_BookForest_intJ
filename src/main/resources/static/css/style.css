@@ -98,3 +98,26 @@ body {
     display: block;
     width: 100%;
 }
+
+/* Links */
+.links {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.links a {
+    color: #555;
+    text-decoration: none; /* 밑줄 제거 */
+    font-size: 0.9rem;
+    margin: 0 10px; /* 좌우 간격 */
+}
+
+.links a:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+.links span {
+    color: #aaa; /* 구분자 색상 */
+    margin: 0 5px; /* 구분자 좌우 간격 */
+}

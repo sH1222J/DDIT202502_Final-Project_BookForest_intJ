@@ -9,12 +9,24 @@
         <a th:href="@{/customer-service}">고객센터</a>
         <a th:href="@{/mypage/orders}">마이페이지</a>
     </nav>
-
-    <nav class="util-nav">
-        <a th:href="@{/login}">로그인</a>
+    <!--로그인 시 시작 -->
+    <div sec:authorize="isAuthenticated()">
+        <!--<div sec:authentication="principal.registerReqDto" var="registerReqDto"></div>-->
+        <h3 class="profile-username text-center">
+            <form action="/user/logout" method="post">
+                <span sec:authentication="principal.registerReqDto.userNm"></span>님 환영합니다
+                <button type="submit" class="btn btn-danger btn-sm">로그아웃</button>
+            </form>
+        </h3>
+    </div>
+    <!--로그인 시 끝 -->
+    <!--비로그인 시 시작 -->
+    <nav sec:authorize="isAnonymous()" class="util-nav">
+        <a th:href="@{/user/login}">로그인</a>
         <a th:href="@{/signup}">회원가입</a>
         <a th:href="@{/cart}">장바구니</a>
     </nav>
+    <!--비로그인 시 끝 -->
 </header>
 
 </html>
