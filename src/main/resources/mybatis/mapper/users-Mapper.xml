@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookforest.project_bookforest_intj.mapper.UsersMapper">
+
+    <!--
+    USERS 테이블에 insert(회원가입)
+    public int registerUser(RegisterReqDto registerReqDto);
+
+    RegisterReqDto(aeId=null, ccgU001=null, userNm=3, userId=null
+        , address=7, email=4@5, enabled=null, password=2, phone=6
+        , username=1, authVOList=null)
+    -->
+    <insert id="registerUser" parameterType="com.bookforest.project_bookforest_intj.user.vo.RegisterReqDto">
+        INSERT INTO USERS
+        (AE_ID, CCG_U001, USER_NM, ADDRESS
+        , EMAIL, ENABLED, PASSWORD, PHONE, USERNAME)
+        VALUES(#{username}, 'ROLE_U01', #{userNm}, #{address}
+              , #{email}, '1', #{password}, #{phone}, #{username})
+    </insert>
+
+    <select id="findByNameAndUsernameAndEmail" resultType="com.bookforest.project_bookforest_intj.user.vo.UserVO">
+        SELECT USER_ID, USERNAME, PASSWORD, EMAIL, USER_NM as name, PHONE, ADDRESS
+        FROM USERS
+        WHERE USER_NM = #{name} AND USERNAME = #{username} AND EMAIL = #{email}
+    </select>
+
+</mapper>

@@ -88,3 +88,6 @@ nb-configuration.xml
 ## Miscellaneous
 ##############################
 *.log
+.svn
+gemini_cli
+bookforest_design
